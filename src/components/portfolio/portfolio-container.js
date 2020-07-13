@@ -10,11 +10,21 @@ export default class PortfolioContainer extends Component {
     this.state = {
       pageTitle: "Welcome to my portfolio",
       data: [
-        {title: "JCC"}, 
-        {title: "Jiffy Lube"},
-        {title: "Brighton"}
+        {title: "JCC", category: "Lifeguard"}, 
+        {title: "Jiffy Lube", category: "UpperBay Technician"},
+        {title: "Brighton", category: "Board Instructor"}
       ]
     };
+
+    this.handleFilter = this.handleFilter.bind(this);
+  }
+
+  handleFilter(filter) {
+    this.setState({
+      data: this.state.data.filter(item => {
+        return item.category === filter;
+      })
+    })
   }
 
   portfolioItems() {
@@ -25,11 +35,20 @@ export default class PortfolioContainer extends Component {
   }
 
   render() {
+    if (this.state.isLoading) {
+      return <div>Loading...</div>;
+    }
+    
     return (
       <div>
-        <h2>this.state.pageTitle</h2>
+        <h2>{this.state.pageTitle}</h2>
+
+        <button onClick={() => this.handleFilter('Lifeguard')}>Lifeguard</button>
+        <button onClick={() => this.handleFilter('UpperBay Technician')}>UpperBay Technician</button>
+        <button onClick={() => this.handleFilter('Board Instructor')}>Board Instructor</button>
 
         {this.portfolioItems()}
+
       </div>
     );
   }
