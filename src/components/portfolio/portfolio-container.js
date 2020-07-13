@@ -24,12 +24,11 @@ export default class PortfolioContainer extends Component {
       data: this.state.data.filter(item => {
         return item.category === filter;
       })
-    })
+    });
   }
 
   portfolioItems() {
-
-    return data.map(item => {
+    return this.state.data.map(item => {
       return <PortfolioItem title={item.title} url={"google.com"} />;
     });
   }
@@ -38,17 +37,22 @@ export default class PortfolioContainer extends Component {
     if (this.state.isLoading) {
       return <div>Loading...</div>;
     }
-    
+
     return (
       <div>
         <h2>{this.state.pageTitle}</h2>
 
-        <button onClick={() => this.handleFilter('Lifeguard')}>Lifeguard</button>
-        <button onClick={() => this.handleFilter('UpperBay Technician')}>UpperBay Technician</button>
-        <button onClick={() => this.handleFilter('Board Instructor')}>Board Instructor</button>
+        <button onClick={() => this.handleFilter("eCommerce")}>
+          eCommerce
+        </button>
+        <button onClick={() => this.handleFilter("Scheduling")}>
+          Scheduling
+        </button>
+        <button onClick={() => this.handleFilter("Enterprise")}>
+          Enterprise
+        </button>
 
         {this.portfolioItems()}
-
       </div>
     );
   }
