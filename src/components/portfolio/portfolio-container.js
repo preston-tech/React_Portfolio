@@ -9,10 +9,11 @@ export default class PortfolioContainer extends Component {
 
     this.state = {
       pageTitle: "Welcome to my portfolio",
+      isLoading: false,
       data: [
-        {title: "JCC", category: "Lifeguard"}, 
-        {title: "Jiffy Lube", category: "UpperBay Technician"},
-        {title: "Brighton", category: "Board Instructor"}
+        {title: "JCC", category: "Lifeguard", slug: 'jcc'}, 
+        {title: "Jiffy Lube", category: "UpperBay Technician", slug: 'jiffy-lube'},
+        {title: "Brighton", category: "Board Instructor", slug: 'brighton'}
       ]
     };
 
