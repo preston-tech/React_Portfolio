@@ -1,5 +1,6 @@
   
 import React, { Component } from "react";
+import axios from 'axios';
 
 import PortfolioItem from "./portfolio-item";
 
@@ -10,11 +11,7 @@ export default class PortfolioContainer extends Component {
     this.state = {
       pageTitle: "Welcome to my portfolio",
       isLoading: false,
-      data: [
-        {title: "JCC", category: "Lifeguard", slug: 'jcc'}, 
-        {title: "Jiffy Lube", category: "UpperBay Technician", slug: 'jiffy-lube'},
-        {title: "Brighton", category: "Board Instructor", slug: 'brighton'}
-      ]
+      data: []
     };
 
     this.handleFilter = this.handleFilter.bind(this);
@@ -28,10 +25,30 @@ export default class PortfolioContainer extends Component {
     });
   }
 
+  getPortfolioItems() {
+    axios
+      .get("https://prestonphillips.devcamp.space/portfolio/portfolio_items")
+      .then(response => {
+        this.setState({
+          data: response.data.portfolio_items
+        })
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
   portfolioItems() {
     return this.state.data.map(item => {
-      return <PortfolioItem title={item.title} url={"google.com"} />;
+      console.log("item data", item);
+      return (
+        <PortfolioItem key={item.id} title={item.name} url={item.url} slug={item.id} />
+      );
     });
+  }
+
+  componentDidMount() {
+    this.getPortfolioItems();
   }
 
   render() {

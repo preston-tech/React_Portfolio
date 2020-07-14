@@ -1,6 +1,5 @@
-  
 import React from "react";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 export default function(props) {
   return (
@@ -8,7 +7,7 @@ export default function(props) {
       <h3>{props.title}</h3>
       <h4>{props.url}</h4>
 
-      <Link to={`/portfolio/${porps.slug}`}>Link</Link>
+      <Link to={`/portfolio/${props.slug}`}>Link</Link>
     </div>
   );
 }
