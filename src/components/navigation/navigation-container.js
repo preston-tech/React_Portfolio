@@ -6,7 +6,7 @@ export default class NavigationComponent extends Component {
   constructor() {
     super();
   }
-  
+
   render() {
     return (
       <div className="nav-wrapper">
@@ -36,7 +36,7 @@ export default class NavigationComponent extends Component {
           </div>
         </div>
 
-        <div className="right-side">JORDAN HUDGENS</div>
+        <div className="right-side">PRESTON PHILLIPS</div>
       </div>
     );
   }
