@@ -130,10 +130,7 @@ event.preventDefault();
 
 render() {
   return (
-    <div>
-      <h1>PortfolioForm</h1>
-
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className="portfolio-form-wrapper">
         <div>
           <input
             type="text"
@@ -209,7 +206,6 @@ render() {
           <button type="submit">Save</button>
         </div>
       </form>
-    </div>
   );
 }
 }
