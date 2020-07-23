@@ -186,25 +186,29 @@ render() {
             config={this.componentConfig()}
             djsConfig={this.djsConfig()}
             eventHandlers={this.handleThumbDrop()}
-          />
-
+          >
+            <div className="dz-message">Thumbnail</div>
+          </DropzoneComponent>
           <DropzoneComponent
             ref={this.bannerRef}
             config={this.componentConfig()}
             djsConfig={this.djsConfig()}
             eventHandlers={this.handleBannerDrop()}
-          />
-
+          >
+            <div className="dz-message">Banner</div>
+          </DropzoneComponent>
           <DropzoneComponent
             ref={this.logoRef}
             config={this.componentConfig()}
             djsConfig={this.djsConfig()}
             eventHandlers={this.handleLogoDrop()}
-          />
+          >
+            <div className="dz-message">Logo</div>
+          </DropzoneComponent>
         </div>
 
         <div>
-          <button type="submit">Save</button>
+          <button className="button" type="submit">Save</button>
         </div>
       </form>
   );
