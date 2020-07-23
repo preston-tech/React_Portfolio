@@ -189,6 +189,7 @@ render() {
           >
             <div className="dz-message">Thumbnail</div>
           </DropzoneComponent>
+
           <DropzoneComponent
             ref={this.bannerRef}
             config={this.componentConfig()}
@@ -197,6 +198,7 @@ render() {
           >
             <div className="dz-message">Banner</div>
           </DropzoneComponent>
+          
           <DropzoneComponent
             ref={this.logoRef}
             config={this.componentConfig()}
