@@ -8,11 +8,14 @@ const portfolioList = props.data.map(portfolioItem => {
       <div className="portfolio-thumb-img">
         <img src={portfolioItem.thumb_image_url} />
       </div>
-      <h1 className="title">{portfolioItem.name}</h1>
-      <h2>{portfolioItem.id}</h2>
-      <a onClick={() => props.handleDeleteClick(portfolioItem)}>Delete
-        <FontAwesomeIcon icon="trash" />
-      </a>
+
+      <div className="text-content">
+        <h1 className="title">{portfolioItem.name}</h1>
+        <h2>{portfolioItem.id}</h2>
+        <a className="delete-icon" onClick={() => props.handleDeleteClick(portfolioItem)}>Delete
+          <FontAwesomeIcon icon="trash" />
+        </a>
+      </div>
     </div>
   );
 });
