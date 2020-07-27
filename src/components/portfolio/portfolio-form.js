@@ -176,122 +176,95 @@ export default class PortfolioForm extends Component {
   event.preventDefault();
 }
 
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit} className="portfolio-form-wrapper">
-        <div className="two-column">
-          <input
-            type="text"
-            name="name"
-            placeholder="Portfolio Item Name"
-            value={this.state.name}
-            onChange={this.handleChange}
-          />
+render() {
+  return (
+    <form onSubmit={this.handleSubmit} className="portfolio-form-wrapper">
+      <div className="two-column">
+        <input
+          type="text"
+          name="name"
+          placeholder="Portfolio Item Name"
+          value={this.state.name}
+          onChange={this.handleChange}
+        />
 
-          <input
-            type="text"
-            name="url"
-            placeholder="URL"
-            value={this.state.url}
-            onChange={this.handleChange}
-          />
-        </div>
+        <input
+          type="text"
+          name="url"
+          placeholder="URL"
+          value={this.state.url}
+          onChange={this.handleChange}
+        />
+      </div>
 
-        <div className="two-column">
-          <input
-            type="text"
-            name="position"
-            placeholder="Position"
-            value={this.state.position}
-            onChange={this.handleChange}
-          />
+      <div className="two-column">
+        <input
+          type="text"
+          name="position"
+          placeholder="Position"
+          value={this.state.position}
+          onChange={this.handleChange}
+        />
 
-          <select
-            name="category"
-            value={this.state.category}
-            onChange={this.handleChange}
-            className="select-element"
+        <select
+          name="category"
+          value={this.state.category}
+          onChange={this.handleChange}
+          className="select-element"
+        >
+          <option value="eCommerce">eCommerce</option>
+          <option value="Scheduling">Scheduling</option>
+          <option value="Enterprise">Enterprise</option>
+        </select>
+      </div>
+
+      <div className="one-column">
+        <textarea
+          type="text"
+          name="description"
+          placeholder="Description"
+          value={this.state.description}
+          onChange={this.handleChange}
+        />
+      </div>
+
+      <div className="image-uploaders">
+        {this.state.thumb_image && this.state.editMode ? (
+          <img src={this.state.thumb_image} />
+        ) : (
+          <DropzoneComponent
+            ref={this.thumbRef}
+            config={this.componentConfig()}
+            djsConfig={this.djsConfig()}
+            eventHandlers={this.handleThumbDrop()}
           >
-            <option value="eCommerce">eCommerce</option>
-            <option value="Scheduling">Scheduling</option>
-            <option value="Enterprise">Enterprise</option>
-          </select>
-        </div>
+            <div className="dz-message">Thumbnail</div>
+          </DropzoneComponent>
+        )}
+        <DropzoneComponent
+          ref={this.bannerRef}
+          config={this.componentConfig()}
+          djsConfig={this.djsConfig()}
+          eventHandlers={this.handleBannerDrop()}
+        >
+          <div className="dz-message">Banner</div>
+        </DropzoneComponent>
+        <DropzoneComponent
+          ref={this.logoRef}
+          config={this.componentConfig()}
+          djsConfig={this.djsConfig()}
+          eventHandlers={this.handleLogoDrop()}
+        >
+          <div className="dz-message">Logo</div>
+        </DropzoneComponent>
+      </div>
 
-        <div className="one-column">
-          <textarea
-            type="text"
-            name="description"
-            placeholder="Description"
-            value={this.state.description}
-            onChange={this.handleChange}
-          />
-        </div>
-
-        <div className="image-uploaders">
-          {this.state.thumb_image && this.state.editMode ? (
-            <div className="portfolio-manager-image-wrapper">
-              <img src={this.state.thumb_image} />
-
-              <div className="image-remove-link">
-                <a onClick={() => this.deleteImage("thum_image")}>
-                  Remove file
-                </a>
-              </div>
-            </div>
-          ) : (
-            <DropzoneComponent
-              ref={this.thumbRef}
-              config={this.componentConfig()}
-              djsConfig={this.djsConfig()}
-              eventHandlers={this.handleThumbDrop()}
-            >
-              <div className="dz-message">Thumbnail</div>
-            </DropzoneComponent>
-          )}
-
-          {this.state.banner_image && this.state.editMode ? (
-            <div className="portfolio-manager-image-wrapper">
-              <img src={this.state.banner_image} />
-            </div>
-          ) : (
-            <DropzoneComponent
-              ref={this.bannerRef}
-              config={this.componentConfig()}
-              djsConfig={this.djsConfig()}
-              eventHandlers={this.handleBannerDrop()}
-            >
-              <div className="dz-message">Banner</div>
-            </DropzoneComponent>
-          )}
-
-          {this.state.logo && this.state.editMode ? (
-            <div className="portfolio-manager-image-wrapper">
-              <img src={this.state.logo} />
-              <div className="image-removal-link">
-                <a onClick={() => this.deleteImage("logo")}>
-                  Remove file
-                </a>
-              </div>  
-            </div>
-          ) : (
-            <DropzoneComponent
-              ref={this.logoRef}
-              config={this.componentConfig()}
-              djsConfig={this.djsConfig()}
-              eventHandlers={this.handleLogoDrop()}
-            >
-              <div className="dz-message">Logo</div>
-            </DropzoneComponent>
-          )}
-        </div>
-
-        <div>
-          <button className="btn" type="submit">
-            Save
-          </button>
-        </div>
-      </form>
-    );
-  }
+      <div>
+        <button className="btn" type="submit">
+          Save
+        </button>
+      </div>
+    </form>
+  );
+}
 }
