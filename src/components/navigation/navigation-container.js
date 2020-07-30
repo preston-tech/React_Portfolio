@@ -21,7 +21,7 @@ const NavigationComponent = (props) => {
     .then(response => {
       if (response.status === 200) {
         props.history.push("/");
-        props.handlSuccessfulLogout();
+        props.handlSuccessfullLogout();
       }
       return response.data;
     })
