@@ -31,8 +31,6 @@ export default class BlogForm extends Component {
     }
 
     handleSubmit(event) {
-        event.preventDefault();
-
         axios
           .post(
             "https://prestonphillips.devcamp.space/portfolio/portfolio_blogs",
@@ -40,19 +38,22 @@ export default class BlogForm extends Component {
             { withCredentials: true }
           )
           .then(response => {
-            this.props.handleSuccessfulFormSubmission(response.data.portfolio_blog);
-
             this.setState({
-                title: "",
-                blog_status: ""
-            })
+              title: "",
+              blog_status: "",
+              content: ""
+            });
+    
+            this.props.handleSuccessfulFormSubmission(
+              response.data.portfolio_blog
+            );
           })
           .catch(error => {
             console.log("handleSubmit for blog error", error);
           });
     
+        event.preventDefault();
       }
-
 
     handleChange(event) {
         this.setState({
