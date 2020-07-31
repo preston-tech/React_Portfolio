@@ -11,3 +11,5 @@ const BlogFeaturedImage = props => {
         </div>
     )
 }
+
+export default BlogFeaturedImage;

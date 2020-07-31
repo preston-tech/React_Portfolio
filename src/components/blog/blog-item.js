@@ -22,7 +22,10 @@ const BlogItem = props => {
           <span>
             ...<Link to={`/b/${id}`}>Read more!</Link>
           </span>
-        }>{striptags(content)}</Truncate>
+        }
+        >
+          {striptags(content)}
+        </Truncate>
       </div>
     </div>
   );
